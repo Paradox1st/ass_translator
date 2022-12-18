@@ -61,7 +61,7 @@ def open_translate(file_path):
 def txt_get_lines(lines):
     raw_string = "".join(lines)
     lines = raw_string.split("\n\n")
-    txt_lines = [line.strip() for line in lines]
+    txt_lines = [line.strip().replace("\n","\\N") for line in lines]
     return txt_lines
 
 
@@ -73,7 +73,7 @@ def txt_get_lines(lines):
 def srt_get_lines(lines):
     raw_string = "".join(lines)
     lines = raw_string.split("\n\n")
-    txt_lines = ["\n".join(line.split('\n')[2:])
+    txt_lines = ["\\N".join(line.split('\n')[2:])
                  for line in lines if line != '']
     return txt_lines
 
