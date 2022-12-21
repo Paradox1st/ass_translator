@@ -91,7 +91,7 @@ def swap_lines(original_line, translate_line):
     # regex pattern to match ass tags
     regex = "{.*?}"
     # divide pretext
-    pretext = ",".join(original_line.split(',',9)[:-1])
+    pretext = ",".join(original_line.split(',',9)[:-1]) + ","
     text = original_line.split(',',9)[-1]
     # find all tags
     tags = re.findall(regex, text)
