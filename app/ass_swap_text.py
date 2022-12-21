@@ -90,10 +90,11 @@ def srt_get_lines(lines):
 def swap_lines(original_line, translate_line):
     # regex pattern to match ass tags
     regex = "{.*?}"
+    # divide pretext
+    pretext = ",".join(original_line.split(',',9)[:-1])
+    text = original_line.split(',',9)[-1]
     # find all tags
-    tags = re.findall(regex, original_line)
-    # extract subtitle info 'Dialog: 0,...'
-    pretext = re.split(regex, original_line)[0]
+    tags = re.findall(regex, text)
     # return line with tags preserved
     return pretext + "".join(tags) + translate_line + "\n"
 
